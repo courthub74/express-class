@@ -4,6 +4,9 @@ const express = require("express")
 //set up the server with app variable calling express as a function
 const app = express()
 
+//access the public folder
+app.use(express.static("public"))
+
 //Tell app to use view engine
 app.set('view engine', 'ejs')
 //use the middleware
