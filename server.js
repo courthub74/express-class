@@ -15,16 +15,23 @@ app.get("/", (req, res) => {
     res.render("index", { text: "Your Life will surely change"})
 })
 
-app.get('/users', (req, res) => {
-	//will use post request but for now
-	res.send("User List")
-})
+//Importing the users.js
+const userRouter = require('./routes/users')
 
-//now generate users
-app.get('/users/new', (req, res) => {
-	//will use post request but for now
-	res.send("User New Form")
-})
+//links the userRouter to the /users path
+app.use('/users', userRouter)
+
+//YOU CAN PUT THE USERS HERE TOO
+// app.get('/users', (req, res) => {
+// 	//will use post request but for now
+// 	res.send("User List")
+// })
+
+// //now generate users
+// app.get('/users/new', (req, res) => {
+// 	//will use post request but for now
+// 	res.send("User New Form")
+// })
 
 
 //make servern run pass through port #
