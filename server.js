@@ -6,6 +6,8 @@ const app = express()
 
 //Tell app to use view engine
 app.set('view engine', 'ejs')
+//use the middleware
+app.use(logger)
 
 //set the engine and the callback
 // app.engine('ejs', )
@@ -20,6 +22,12 @@ const userRouter = require('./routes/users')
 
 //links the userRouter to the /users path
 app.use('/users', userRouter)
+
+//middleware for logging out
+function logger(req, res, next) {
+    console.log(req.originalUrl)
+    next()
+}
 
 //YOU CAN PUT THE USERS HERE TOO
 // app.get('/users', (req, res) => {
